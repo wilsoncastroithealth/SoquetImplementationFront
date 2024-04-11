@@ -44,9 +44,9 @@ export class SingnalrService {
       console.log(data2)
     })
 
-    let id = sessionStorage.getItem('idUser')
+    let id = sessionStorage.getItem('userId')
 
-    if(sessionStorage.getItem('idUser')){
+    if(sessionStorage.getItem('userId')){
       this.hubConnection.on(id!, (data2) => {
         // this.sign2Emmiter.emit(data2)
         console.log(data2)

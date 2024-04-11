@@ -27,8 +27,9 @@ export class ChatComponent implements OnInit {
       }
 
     })
-    this.user.setValue(sessionStorage.getItem('idUser'))
-    if( this.user.value == 2){
+    this.user.setValue(sessionStorage.getItem('userId'))
+    debugger
+    if( this.user.value == "2"){
       this.userToSend.setValue("1")
     }else{
       this.userToSend.setValue("2")
