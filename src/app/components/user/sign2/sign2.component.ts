@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Sign1Service } from 'src/app/core/sign1.service';
-import { SingnalrService } from 'src/app/core/singnalr.service';
+import { Sign1Service } from 'src/app/core/services/sign1.service';
+import { Sign2Service } from 'src/app/core/services/sign2.service';
+import { SingnalrService } from 'src/app/core/services/singnalr.service';
 
 @Component({
-  selector: 'app-sign1',
-  templateUrl: './sign1.component.html',
-  styleUrls: ['./sign1.component.css']
+  selector: 'app-sign2',
+  templateUrl: './sign2.component.html',
+  styleUrls: ['./sign2.component.css']
 })
-export class Sign1Component implements OnInit {
+export class Sign2Component implements OnInit {
+
 
   idEdit: boolean = false;
   idGlobal : number = 0;
@@ -16,18 +18,18 @@ export class Sign1Component implements OnInit {
   description = new FormControl('')
 
   data: any[] = []
-  constructor(private sign1: Sign1Service, private conection: SingnalrService) { }
+  constructor(private sign2: Sign2Service, private conection: SingnalrService) { }
 
   ngOnInit(): void {
     this.getData()
   }
 
   async getData() {
-    let dataLoad = await this.sign1.getInfoSign1().toPromise()
+    let dataLoad = await this.sign2.getInfoSign1().toPromise()
     if (dataLoad) {
       this.data = dataLoad.data.reverse()
     }
-    this.conection.sign1Emmiter.subscribe(data => {
+    this.conection.sign2Emmiter.subscribe(data => {
       this.data = data.data.reverse()
     })
 
@@ -47,7 +49,7 @@ export class Sign1Component implements OnInit {
   enviar() {
     if (!this.idEdit) {
       if (this.code.value && this.description.value) {
-        this.sign1.create({
+        this.sign2.create({
           code: this.code.value,
           description: this.description.value
         }).subscribe(e => {
@@ -60,7 +62,7 @@ export class Sign1Component implements OnInit {
       }
     } else {
 
-      this.sign1.update({
+      this.sign2.update({
         id: this.idGlobal,
         code: this.code.value,
         description: this.description.value
@@ -75,9 +77,8 @@ export class Sign1Component implements OnInit {
   }
 
   delete(id: any){
-    this.sign1.delete(id).subscribe(r=>{
+    this.sign2.delete(id).subscribe(r=>{
       window.alert('eliminado')
     })
   }
-
 }

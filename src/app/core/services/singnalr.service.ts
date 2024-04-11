@@ -1,5 +1,7 @@
+import { HttpClient,  } from '@angular/common/http';
 import { Injectable, EventEmitter } from '@angular/core';
 import * as signalR from "@aspnet/signalr";
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,13 +10,13 @@ export class SingnalrService {
 
   url = 'https://ismaelruge.bsite.net'
   // url = 'https://localhost:7100'
-  private hubConnection: signalR.HubConnection;
+  public hubConnection: signalR.HubConnection;
 
   messageNotification: EventEmitter<string> = new EventEmitter<string>();
   sign1Emmiter: EventEmitter<any> = new EventEmitter<any>();
   sign2Emmiter: EventEmitter<any> = new EventEmitter<string>();
 
-  constructor() {
+  constructor(private HTTP : HttpClient) {
 
     this.hubConnection = new signalR.HubConnectionBuilder()
       .withUrl(`${this.url}/message`)
@@ -41,8 +43,35 @@ export class SingnalrService {
      this.sign2Emmiter.emit(data2)
       console.log(data2)
     })
+
+    let id = sessionStorage.getItem('idUser')
+
+    if(sessionStorage.getItem('idUser')){
+      this.hubConnection.on(id!, (data2) => {
+        // this.sign2Emmiter.emit(data2)
+        console.log(data2)
+      })
+    }
+
+
+
+
   }
 
+
+  sendMessage(data: any): Observable<any>{
+    return this.HTTP.post<any>(`${this.url}/api/Beer`, data)
+  }
+
+
+  abrilCanal(canal:string){
+  //   this.hubConnection.on(canal, (data2) => {
+  //     // this.sign2Emmiter.emit(data2)
+  //     console.log('djfdsf')
+  //     console.log(data2)
+
+  //   })
+  }
 
 
 }

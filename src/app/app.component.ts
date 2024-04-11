@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SingnalrService } from './core/singnalr.service';
+import { SingnalrService } from './core/services/singnalr.service';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -9,7 +9,7 @@ import { FormControl } from '@angular/forms';
 })
 export class AppComponent  {
 
-  sidebarActive = false;
+
 
 
 

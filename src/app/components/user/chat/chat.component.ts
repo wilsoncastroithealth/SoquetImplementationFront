@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { SingnalrService } from 'src/app/core/singnalr.service';
+import { SingnalrService } from 'src/app/core/services/singnalr.service';
 
 @Component({
   selector: 'app-chat',
@@ -13,6 +13,9 @@ export class ChatComponent implements OnInit {
   chat = new FormControl('')
   chatMessages: any[] = []
 
+  userToSend = new FormControl("")
+  user = new FormControl("")
+
   constructor(private signal: SingnalrService) {
 
   }
@@ -24,13 +27,27 @@ export class ChatComponent implements OnInit {
       }
 
     })
-
+    this.user.setValue(sessionStorage.getItem('idUser'))
+    if( this.user.value == 2){
+      this.userToSend.setValue("1")
+    }else{
+      this.userToSend.setValue("2")
+    }
   }
 
   sendChat() {
     if (this.chat.value) {
+    //  this.signal.abrilCanal(this.userToSend.value)
+      this.signal.sendMessage({
+        UserEnvia: this.user.value,
+        UserRecibe: this.userToSend.value,
+        Mensaje: this.chat.value
+      }).subscribe(r => { });
       this.chatMessages.push({ message: this.chat.value, recibed: false })
       this.chat.setValue("")
+
+
+
     }
   }
 
