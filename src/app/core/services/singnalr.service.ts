@@ -15,6 +15,7 @@ export class SingnalrService {
   messageNotification: EventEmitter<string> = new EventEmitter<string>();
   sign1Emmiter: EventEmitter<any> = new EventEmitter<any>();
   sign2Emmiter: EventEmitter<any> = new EventEmitter<string>();
+  messageRecibed : EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private HTTP : HttpClient) {
 
@@ -48,7 +49,7 @@ export class SingnalrService {
 
     if(sessionStorage.getItem('userId')){
       this.hubConnection.on(id!, (data2) => {
-        // this.sign2Emmiter.emit(data2)
+         this.messageRecibed.emit(data2)
         console.log(data2)
       })
     }

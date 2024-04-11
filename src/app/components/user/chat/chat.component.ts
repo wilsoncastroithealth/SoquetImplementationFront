@@ -20,25 +20,25 @@ export class ChatComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.signal.messageNotification.subscribe(e => {
-      if (e) {
+    this.signal.messageRecibed.subscribe(m => {
 
-        this.chatMessages.push({ message: e, recibed: true })
-      }
-
+      this.chatMessages.push({ message: m.mensaje, recibed: true })
     })
+
+
+
     this.user.setValue(sessionStorage.getItem('userId'))
-    debugger
-    if( this.user.value == "2"){
+
+    if (this.user.value == "2") {
       this.userToSend.setValue("1")
-    }else{
+    } else {
       this.userToSend.setValue("2")
     }
   }
 
   sendChat() {
     if (this.chat.value) {
-    //  this.signal.abrilCanal(this.userToSend.value)
+      //  this.signal.abrilCanal(this.userToSend.value)
       this.signal.sendMessage({
         UserEnvia: this.user.value,
         UserRecibe: this.userToSend.value,
