@@ -1,0 +1,12 @@
+<div id="header">
+  <div id="logo">
+
+    <img style="cursor: pointer;" (click)="sideToggle.emit(!sidebarActive)" [src]="sidebarActive? '../assets/Images/cross-svgrepo-com.svg' : '../assets/Images/menu-icon.svg' " alt="">
+
+  </div>
+  <div id="menu">
+    <a href="#">Chat</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+  </div>
+</div>

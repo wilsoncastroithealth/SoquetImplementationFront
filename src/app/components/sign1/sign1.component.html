@@ -1,0 +1,39 @@
+<div class="container">
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Descripción</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td>{{item.code}}</td>
+        <td>{{item.description}}</td>
+        <td> <img  (click)="edit(item.id)" src="../../../assets/Images/edit.svg" alt=""></td>
+        <td><img  (click)="delete(item.id)" src="../../../assets/Images/trash.svg" alt=""></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+
+  <div class="formulario">
+
+    <form #formularioMascota="ngForm">
+      <input type="text" name="Codigo" placeholder="Codigo" [formControl]="code">
+      <br><br>
+      <input type="text" name="Descripción" placeholder="Descripcion" [formControl]="description">
+      <br><br>
+
+      <button (click)="enviar()" type="submit">Guardar</button>
+    </form>
+
+
+  </div>
+
+</div>

@@ -1,0 +1,23 @@
+<div class="chat">
+
+  <div class="mensajes">
+
+    <div class="mensajes_container">
+      <div [ngClass]="{'received': item.recibed, 'sent': !item.recibed}" *ngFor="let item of chatMessages">
+        {{item.message}}
+      </div>
+    </div>
+
+
+
+
+    <div class="panel">
+      <textarea [formControl]="chat" class="full-width" name="" id=""></textarea>
+      <button (click)="sendChat()" class="send-btn">Enviar</button>
+    </div>
+
+
+  </div>
+
+
+</div>
