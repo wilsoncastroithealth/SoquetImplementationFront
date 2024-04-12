@@ -11,11 +11,7 @@
   width: 100%;
   height: 100%;
   background: rgb(21, 74, 113);
-  background: linear-gradient(
-    90deg,
-    rgba(21, 74, 113, 1) 0%,
-    rgba(154, 2, 255, 1) 100%
-  );
+  background: #0048ab;
   border-right: solid 1px #ccc;
   color: white;
 }

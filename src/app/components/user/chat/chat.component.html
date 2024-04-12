@@ -1,25 +1,65 @@
 <div class="chat">
 
-  <div class="toMailer">
 
-    CHAT CON {{userToSend.value}} PERSONA
-    <input type="text" [formControl]="userToSend">
+  <div class="listUsers">
+
+    <div class="user_info">
+      <div *ngIf="curentUser" class="img_user">
+        <img src="../../../../assets/Images/avatar-user.svg" alt="">
+      </div>
+      <div class="name">
+        {{curentUser.userName}}
+      </div>
+    </div>
+
+    <div class="list_container">
+      <div class="searcher">
+        <input type="text" name="search" value="" placeholder="buscar">
+      </div>
+      <div class="scroll_container">
+        <div (click)="initChat(item.id)" *ngFor="let item of listUsers" class="user_card">
+          <div class="img_user">
+            <img src="../../../../assets/Images/avatar.jpg" alt="">
+          </div>
+          <div class="name">
+            {{item.userName}}
+          </div>
+
+        </div>
+      </div>
+
+
+
+    </div>
+
+    <!-- CHAT CON {{userToSend.value}} PERSONA
+    <input type="text" [formControl]="userToSend"> -->
   </div>
-  <div class="mensajes">
-    <div class="mensajes_container">
+  <div *ngIf="chatinitiated" class="mensajes">
+    <div class="header">
+      <div *ngIf="curentUserChat" class="img_user">
+        <img src="../../../../assets/Images/avatar.jpg" alt="">
+      </div>
+      <div class="name">
+        {{curentUserChat.userName}}
+      </div>
+    </div>
+    <div class="mensajes_container" #mensajesContainer>
       <div [ngClass]="{'received': item.recibed, 'sent': !item.recibed}" *ngFor="let item of chatMessages">
         {{item.message}}
       </div>
     </div>
     <div class="panel">
-      <textarea [formControl]="chat" class="full-width" name="" id=""></textarea>
-      <button (click)="sendChat()" class="send-btn">Enviar</button>
+      <img width="20px" style="margin-left: 20px;" src="../../../../assets/Images/adjuntar.svg" alt="">
+      <textarea (keydown.enter)="sendChat()" [formControl]="chat" class="full-width" name="" id=""></textarea>
+      <!-- <button (click)="" class="send-btn">Enviar</button> -->
     </div>
   </div>
-
-  <div class="user">
-    USUARIO ACTUAL {{user.value}}
-    <input type="text" [formControl]="user">
+  <div class="with_out" *ngIf="!chatinitiated">
+    <div>
+      <img style="width: 250px;" src="../../../../assets/Images/chat.svg" alt="">
+    </div>
+    Click en un chat para inciar una conversacion
   </div>
 
 </div>
