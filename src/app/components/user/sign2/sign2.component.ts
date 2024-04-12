@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { Sign1Service } from 'src/app/core/services/sign1.service';
 import { Sign2Service } from 'src/app/core/services/sign2.service';
 import { SingnalrService } from 'src/app/core/services/singnalr.service';
@@ -14,8 +14,8 @@ export class Sign2Component implements OnInit {
 
   idEdit: boolean = false;
   idGlobal : number = 0;
-  code = new FormControl('')
-  description = new FormControl('')
+  code = new UntypedFormControl('')
+  description = new UntypedFormControl('')
 
   data: any[] = []
   constructor(private sign2: Sign2Service, private conection: SingnalrService) { }

@@ -1,6 +1,6 @@
 import { LoginService } from './../../core/services/login.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, FormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,12 +12,12 @@ export class LoginComponent implements OnInit {
 
   errMsg : any[] = [];
 
-  loginForm : FormGroup = this.fb.group({
+  loginForm : UntypedFormGroup = this.fb.group({
     username: ['', Validators.required],
     password: ['', [Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{5,}')]]
   });
 
-  constructor(private fb : FormBuilder , private loginSvc: LoginService, private router : Router){
+  constructor(private fb : UntypedFormBuilder , private loginSvc: LoginService, private router : Router){
 
   }
   ngOnInit() {

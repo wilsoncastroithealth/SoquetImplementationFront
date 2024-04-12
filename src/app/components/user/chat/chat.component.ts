@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { ChatService } from 'src/app/core/services/chat/chat.service';
 import { SingnalrService } from 'src/app/core/services/singnalr.service';
 import { UsersService } from 'src/app/core/services/users.service';
@@ -12,15 +12,15 @@ import { UsersService } from 'src/app/core/services/users.service';
 export class ChatComponent implements OnInit {
 
   title = 'singalr';
-  chat = new FormControl('')
+  chat = new UntypedFormControl('')
   chatMessages: any[] = []
   listUsers: any[] = []
   userId: any;
   curentUser = { userName: "", id: 0 }
   curentUserChat = { userName: "", id: 0 }
   currentChatId: number = 0;
-  userToSend = new FormControl("")
-  user = new FormControl("")
+  userToSend = new UntypedFormControl("")
+  user = new UntypedFormControl("")
 
   chatinitiated = false;
 
