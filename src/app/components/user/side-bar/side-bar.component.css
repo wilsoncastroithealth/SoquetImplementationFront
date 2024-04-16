@@ -6,7 +6,7 @@
   padding-left: 10px;
   margin-top: 10px;
 }
-
+/*
 #sidebar {
   width: 100%;
   height: 100%;
@@ -20,4 +20,35 @@ a {
   border-bottom: 1px solid #ccc;
   padding: 15px 20px;
   color: white;
+} */
+
+
+/* Estilos para el contenedor principal */
+#sidebar {
+  width: 200px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #333;
+  padding-top: 20px;
+}
+
+/* Estilos para el menú */
+#menu a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  margin-bottom: 5px;
+}
+
+/* Estilos para los enlaces activos */
+#menu a.active {
+  background-color: #555;
+}
+
+/* Estilos para los enlaces al pasar el cursor */
+#menu a:hover {
+  background-color: #555;
 }

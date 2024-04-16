@@ -1,5 +1,5 @@
 <div class="container">
-
+<div class="table">
   <table>
 
     <thead>
@@ -14,15 +14,20 @@
       <tr *ngFor="let item of data">
         <td>{{item.code}}</td>
         <td>{{item.description}}</td>
-        <td> <img  (click)="edit(item.id)" src="../../../assets/Images/edit.svg" alt=""></td>
-        <td><img  (click)="delete(item.id)" src="../../../assets/Images/trash.svg" alt=""></td>
+        <td style="text-align: center;"> <img  (click)="edit(item.id)" src="../../../assets/Images/edit.svg" alt=""></td>
+        <td style="text-align: center;"><img  (click)="delete(item.id)" src="../../../assets/Images/trash.svg" alt=""></td>
       </tr>
 
     </tbody>
   </table>
 
+</div>
+
+
 
   <div class="formulario">
+
+    <div class="title">Crear analito</div>
 
     <form #formularioMascota="ngForm">
       <input type="text" name="Codigo" placeholder="Codigo" [formControl]="code">
@@ -30,7 +35,12 @@
       <input type="text" name="Descripción" placeholder="Descripcion" [formControl]="description">
       <br><br>
 
-      <button (click)="enviar()" type="submit">Guardar</button>
+
+      <div class="btns">
+        <button (click)="enviar()" type="submit">Guardar</button>
+        <button (click)="cancel()" type="submit">Cancelar</button>
+      </div>
+
     </form>
 
 

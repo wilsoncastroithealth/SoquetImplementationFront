@@ -80,4 +80,11 @@ export class Sign1Component implements OnInit {
     })
   }
 
+  cancel(){
+    this.code.setValue('')
+    this.description.setValue('')
+    this.idEdit = false;
+    this.idGlobal = 0
+  }
+
 }

@@ -5,3 +5,56 @@
   gap: 3em;
   width: 100%;
 }
+/* Estilos para el contenedor principal */
+.container {
+  margin: 20px auto;
+  width: 80%;
+}
+
+/* Estilos para la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+table th {
+  background-color: #f2f2f2;
+}
+
+/* Estilos para los íconos de editar y eliminar */
+table img {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
+
+/* Estilos para el formulario */
+.formulario {
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.formulario input[type="text"] {
+  width: calc(100% - 20px);
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.formulario button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.formulario button:hover {
+  background-color: #45a049;
+}
